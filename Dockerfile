@@ -7,6 +7,6 @@ RUN apk add --update dnsmasq
 COPY etc /etc/
 
 # Set the start of the IP range to reply to PXE DHCP requests on
-ENV DHCP_RANGE_START=192.168.68.1
+# ENV DHCP_RANGE_START=192.168.68.1
 
 # dnsmasq will be started as a system service by the s6 supervisor
