@@ -1,5 +1,4 @@
 ---
-version: "2.1"
 services:
   netbootxyz:
     container_name: netbootxyz
@@ -7,20 +6,21 @@ services:
       context: .
     environment:
       - DHCP_RANGE_START=${DHCP_RANGE_START:-192.168.0.1}
-    networks:
-      netbootxyz_network:
-        ipv4_address: ${CONTAINER_IP:-192.168.0.250}
+    network_mode: host
+    # networks:
+    #   netbootxyz_network:
+    #     ipv4_address: ${CONTAINER_IP:-192.168.0.250}
     cap_add:
       - NET_ADMIN
     volumes:
       - /config
-networks:
-  netbootxyz_network:
-    driver: ipvlan
-    driver_opts:
-      parent: ${INTERFACE:-eth0}
-    ipam:
-      config:
-        - subnet: ${SUBNET:-192.168.0.1}/${SUBNET_PREFIX_BITS:-24}
-          gateway: ${GATEWAY:-192.168.0.1}
-          ip_range: ${CONTAINER_IP:-192.168.0.250}/32
+# networks:
+#   netbootxyz_network:
+#     driver: ipvlan
+#     driver_opts:
+#       parent: ${INTERFACE:-eth0}
+#     ipam:
+#       config:
+#         - subnet: ${SUBNET:-192.168.0.1}/${SUBNET_PREFIX_BITS:-24}
+#           gateway: ${GATEWAY:-192.168.0.1}
+#           ip_range: ${CONTAINER_IP:-192.168.0.250}/32
