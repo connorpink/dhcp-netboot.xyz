@@ -5,7 +5,9 @@ services:
     build:
       context: .
     environment:
-      - DHCP_RANGE_START=${DHCP_RANGE_START:-192.168.0.1}
+      - DHCP_RANGE_START=${DHCP_RANGE_START:-192.168.68.1}
+      - NGINX_PORT=8083        # host will listen on 8083 now
+      - WEB_APP_PORT=3005      # host will listen on 3005
     network_mode: host
     # networks:
     #   netbootxyz_network:
