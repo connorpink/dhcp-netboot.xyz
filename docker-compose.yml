@@ -6,7 +6,7 @@ services:
     build:
       context: .
     environment:
-      - DHCP_RANGE_START=${SUBNET:-192.168.0.1}
+      - DHCP_RANGE_START=${DHCP_RANGE_START:-192.168.0.1}
     networks:
       netbootxyz_network:
         ipv4_address: ${CONTAINER_IP:-192.168.0.250}
